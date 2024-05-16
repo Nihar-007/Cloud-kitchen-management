@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css"
+    integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../static/css/customer.css">
+  <title>Customer Details</title>
+  <script src="/static/cart.js" async></script>
+  <!-- <script src="{{ url_for('static', filename='cart.js') }}" async></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body onload="getLocation()">
+  <div class="container">
+    <header class="header">
+
+      <nav class="navbar">
+        <a id="display-button" onclick="displayCustomerDetails()">My Information</a>
+        <a href="{{ url_for('orderHistory') }}">Order History</a>
+        <a href="{{ url_for('OfferPage') }}">Offers</a>
+        <a href="{{ url_for('ContactUs') }}">Contact Us</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+
+      </nav>
+
+      <div class="navleft">
+        <form action="#" method="post" class="search-bar">
+          <input type="text" name="searchquery" placeholder="Search" id="Search" />
+          <button type="submit" class="search-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 40" stroke-width="2" stroke="black"
+              class="w-4 h-4" color="black">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </button>
+          <input type="hidden" name="name_oh" id="name_oh">
+          <input type="hidden" name="price_oh" id="price_oh">
+          <input type="hidden" name="qty_oh" id="qty_oh">
+          <!-- <input type="hidden" name="ip" id="ip">
+          <input type="hidden" name="country" id="country">
+          <input type="hidden" name="state" id="state">
+          <input type="hidden" name="city" id="city"> -->
+        </form>
+
+        <script>
+          $(document).ready(function () {
+            // load_data()
+            function load_data(q) {
+              $.ajax({
+                url: '/livesearch',
+                method: 'POST',
+                data: { q: q },
+                success: function (result) {
+                  $('.contentsearch').empty();
+                  result.forEach(function (item) {
+                    $('.contentsearch').append('<div class="itemsdata">\
+                  <div class="items">\
+                  <h1>'+ item.category + '</h1>\
+                  <div class="contanier">\
+                  <div class="list">\
+                  <img class="shop-item-image" src="../static/restimg/'+ item.image + '" alt="' + item.item + '">\
+                  <div class="detail">\
+                  <div id="name" class="shop-item-title">'+ item.item + '</div>\
+                  <div id="rupis" class="shop-item-price">$'+ item.price + '</div>\
+                  <button id="add" class="add">Add to Cart</button>\
+                   </div></div></div></div>');
+                  });
+                  // console.log($.type(result))
+                  console.log(result)
+                }
+              });
+            }
+
+            $('#Search').keyup(function () {
+              var search = $(this).val();
+              if (search != "") {
+                $('.contentmain').hide()
+                $('.contentsearch').show()
+                load_data(search)
+              }
+              else if (search == "") {
+                $('.contentmain').show()
+                $('.contentsearch').hide()
+              }
+            });
+
+          })
+        </script>
+
+        <a href="#cartdetails" id="cart-button"><i class="fa-solid fa-cart-shopping"> CART</i></a>
+      </div>
+    </header>
+
+
+
+    <script>
+      // JavaScript to toggle cart slider
+      document.getElementById('cart-button').addEventListener('click', function () {
+        document.getElementById('cart-slider').classList.toggle('show');
+      });
+
+    </script>
+  </div>
+  <!-- search div starts -->
+  <div class="contentsearch">
+    <!-- <div class="itemsdata">
+      <div class="items">
+        <div class="contanier">
+          <div class="list">
+            <img class="shop-item-image" src="../static/restimg/" alt="">
+            <div class="detail">
+              <div id="name" class="shop-item-title"></div>
+              <div id="rupis" class="shop-item-price">$</div>
+              <button id="add" class="add">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <!-- search div ends -->
+  <div class="contentmain">
+    <div class="itemsdata">
+      <!-- 1st cart -->
+      <div class="items">
+        <h1>punjabi</h1>
+        <div class="contanier">
+          {% for values in data %}
+          {% if values.category == 'punjabi' %}
+          <div class="list">
+            <img class="shop-item-image" src="../static/restimg/{{values.image}}" alt="{{values.item}}">
+            <div class="detail">
+              <div id="name" class="shop-item-title">{{ values['item'] }}</div>
+              <div id="rupis" class="shop-item-price">${{ values.price }}</div>
+              <button id="add" class="add">Add to Cart</button>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <!-- cart start -->
+      <div class="items">
+        <h1>south indian</h1>
+        <div class="contanier">
+          {% for values in data %}
+          {% if values.category == 'south indian' %}
+          <div class="list">
+            <img class="shop-item-image" src="../static/restimg/{{values.image}}" alt="{{values.item}}">
+            <div class="detail">
+              <div id="name" class="shop-item-title">{{ values['item'] }}</div>
+              <div id="rupis" class="shop-item-price">${{ values.price }}</div>
+              <button id="add" class="add">Add to Cart</button>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <!-- cart end  -->
+      <!-- cart start -->
+      <div class="items">
+        <h1>Gujarati</h1>
+        <div class="contanier">
+          {% for values in data %}
+          {% if values.category == 'gujarati' %}
+          <div class="list">
+            <img class="shop-item-image" src="../static/restimg/{{values.image}}" alt="{{values.item}}">
+            <div class="detail">
+              <div id="name" class="shop-item-title">{{ values['item'] }}</div>
+              <div id="rupis" class="shop-item-price">${{ values.price }}</div>
+              <button id="add" class="add">Add to Cart</button>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <!-- cart end  -->
+      <!-- cart start -->
+      <div class="items">
+        <h1>Maharasta</h1>
+        <div class="contanier">
+          {% for values in data %}
+          {% if values.category == 'maharastra' %}
+          <div class="list">
+            <img class="shop-item-image" src="../static/restimg/{{values.image}}" alt="{{values.item}}">
+            <div class="detail">
+              <div id="name" class="shop-item-title">{{ values['item'] }}</div>
+              <div id="rupis" class="shop-item-price">${{ values.price }}</div>
+              <button id="add" class="add">Add to Cart</button>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- cart end  -->
+
+    <!-- Checkout -->
+
+
+    </script>
+    <script>
+      function remov() {
+        document.getElementById('cart-slider').classList.remove('show');
+      };
+
+    </script>
+    <div class="cart-slider" id="cart-slider">
+      <section class="container content-section" id="cartdetails">
+        <h2 class="section-header">CART</h2>
+        <button onclick="remov()"><i class="fa-regular fa-circle-xmark"></i></button>
+        <div class="cart-row">
+          <span class="cart-item cart-header cart-column">ITEM</span>
+          <span class="cart-price cart-header cart-column">PRICE</span>
+          <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+        </div>
+        <div class="cart-items">
+          <!-- <div class="cart-row">
+          <div class="cart-item cart-column">
+            <img class="cart-item-image " src="../restimg/1.jpeg" width="100"
+              height="100">
+            <span class="cart-item-title">Menu</span>
+          </div>
+          <span class="cart-price cart-column">10</span>
+          <div class="cart-quantity cart-column">
+            <input class="cart-quantity-input" type="number" value="1">
+            <button class="btn btn-danger" type="button">REMOVE</button>
+          </div>
+        </div> -->
+        </div>
+        <div class="cart-total">
+          <strong class="cart-total-title">Total</strong>
+          <span class="cart-total-price">$0</span>
+        </div>
+        <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+
+      </section>
+    </div>
+  </div>
+  <script>
+    function displayCustomerDetails() {
+      // Retrieve customer details
+      var customerName = "{{ session['uname'] }}";
+      var customerNumber = "{{ session['phno'] }}";
+      var customerEmail = "{{ session['email'] }}";
+
+      // Create alert with customer details
+      var alertMessage = "Customer Details:\n\n";
+      alertMessage += "Name: " + customerName + "\n";
+      alertMessage += "Number: " + customerNumber + "\n";
+      alertMessage += "Email: " + customerEmail + "\n";
+
+      alert(alertMessage);
+    }
+  </script>
+  <script>
+    let dict = {}
+    
+    const getLocation = () => {
+      fetch("https://ipapi.co/json")
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data)
+          let c = data.country_name
+          let s = data.region
+          let city = data.city
+          let ip = data.ip
+          dict['ipv6']=ip
+          dict['country']=c
+          dict['state']=s
+          dict['city']=city
+          dict['isp']=data.org
+          // console.log(c,s,city)
+          // document.getElementById("country").value = c;
+          // document.getElementById("state").value = s;
+          // document.getElementById("city").value = city;
+          // $.ajax({
+          //   url: "{{ url_for('home') }}",
+          //   method: "POST",
+          //   data: { ip:ip,c:c, s:s, city:city },
+          //   success: function (result) {
+          //     console.log("Success")
+          //     console.log(result.count)
+          //   }
+          // });
+        });
+      fetch("https://api.bigdatacloud.net/data/client-ip")
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          let ip = data.ipString
+          dict['ipv4']=ip
+          console.log(ip)
+          // document.getElementById("ip").data = ip;
+          // $.ajax({ //error
+          //   url: "/home",
+          //   method: "POST",
+          //   data: { ip: ip },
+          //   success: function (result) {
+          //     console.log("Success")
+          //   }
+          // });
+        });
+    };
+    document.addEventListener("DOMContentLoaded", () =>{
+      const startTime = new Date().getTime();
+      window.addEventListener("beforeunload", () =>{
+        const endTime = new Date().getTime();
+        const total_time =  Math.round((endTime - startTime) / 1000)
+        dict['time'] = total_time
+        console.log(total_time)
+        
+        $.ajax({
+        
+        url : "{{ url_for('home') }}",
+        method : "POST",
+        data : { user_dict : JSON.stringify(dict) },
+        success : function(result){
+          console.log(dict)
+        }
+        });
+      })
+    })
+    console.log(dict)
+    
+  </script>
+</body>
+
+</html>

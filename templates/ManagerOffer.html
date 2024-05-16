@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/view.css">
+    <title>Offers</title>
+</head>
+<body>
+    Here are the list of offer that are active
+    <table>
+        <tr>
+            <th>Offer On</th>
+            <th>Code</th>
+            <th>Start</th>
+            <th>Valid</th>
+            <th>Events</th>
+        </tr>
+        {% for val in data %}
+        <tr>
+            <td>{{ val.offer_on }}</td>
+            <td>{{ val.code }}</td>
+            <td>{{ val.start }}</td>
+            <td>{{ val.valid }}</td>
+            <td>
+                <button><a href="{{ url_for('EditOffer', id=val.id) }}">Edit</a></button>
+                <button><a href="{{ url_for('DeleteOffer', id=val.id) }}">Delete</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <button><a href="{{ url_for('AddOffer') }}">Add Offers</a></button>
+    <button><a href="{{ url_for('manager') }}">Back</a></button>
+
+</body>
+</html>
+
+
+<!-- <form method="post">
+    <fieldset>
+        <legend>List of Offers active</legend>
+
+        <label for="name">Offer </label>
+
+    </fieldset>
+</form> -->

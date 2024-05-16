@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <script src="/static/cart.js"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #060809;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+</style>
+<body>
+    <p>Hello {{ user }}, This is your order history!</p>
+    <form method="post">
+        <table>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Items</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Total</th>
+                <th>Date</th>
+            </tr>
+            {% for d in d1 %}
+            <tr>
+                <td>{{d.id}}</td>
+                <td>{{d.items}}</td>
+                <td>{{d.quantity}}</td>
+                <td>{{d.amount}}</td>
+                <td>{{d.total}}</td>
+                <td>{{d.datee}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>

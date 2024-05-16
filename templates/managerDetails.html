@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/view.css">
+    <title>Manager Details</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Srno</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+        </tr>
+        {% for val in data %}
+        <tr>
+            <td>{{ val.id }}</td>
+            <td>{{ val.name }}</td>
+            <td>{{ val.username }}</td>
+            <td>{{ val.email }}</td>
+            <td>{{ val.phno }}</td>
+        </tr>
+        {% endfor %}
+    </table><br>
+</body>
+</html>

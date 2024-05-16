@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/view.css">
+    <title>Cuisine</title>
+</head>
+<body>
+    Here are the list of Cuisine that are available
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Events</th>
+        </tr>
+        {% for val in data %}
+        <tr>
+            <td>{{ val.category }}</td>
+            <td>{{ val.item }}</td>
+            <td>{{ val.price }}</td>
+            <td>
+                <button><a href="{{ url_for('EditCuisine', id=val.id) }}">Edit</a></button>
+                <button><a href="{{ url_for('DeleteCuisine', id=val.id) }}">Delete</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <button><a href="{{ url_for('AddCuisine') }}">Add Cuisine</a></button>
+    <button><a href="{{ url_for('manager') }}">Back</a></button>
+
+</body>
+</html>

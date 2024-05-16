@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Add the following styles for label and input on the same line */
+        label {
+            display: inline-block;
+            align-items: center;
+            width: 100px;
+            /* Adjust this value as needed */
+            margin-bottom: 10px;
+            /* Optional: Adjust this value as needed */
+        }
+
+        input {
+            display: inline-block;
+            width: calc(100% - 110px);
+            /* Adjust this value based on label width */
+            padding: 8px;
+            margin-bottom: 10px;
+            /* Optional: Adjust this value as needed */
+        }
+
+        /* Additional styling for better aesthetics */
+        h2 {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post">
+        <div class="signup-container">
+            <div class="step user-info active">
+                <h2>Step 1: User Info</h2>
+
+                <label for="name">Name:</label>
+                <input type="text" id="Name" name="name" placeholder="Enter your Name" required>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <div class="controls">
+                    <button onclick="validateAndNext('phone-otp')">Next</button>
+                </div>
+            </div>
+
+            <div class="step phone-otp">
+                <h2>Step 2: Phone OTP</h2>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="otp">OTP:</label>
+                <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+
+                <div class="controls">
+                    <button onclick="prevStep('user-info')">Previous</button>
+                    <button onclick="validateAndNext('password')">Next</button>
+                </div>
+            </div>
+
+            <div class="step password">
+                <h2>Step 3: Password</h2>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password"
+                    required>
+
+                <div class="controls">
+                    <button onclick="prevStep('phone-otp')">Previous</button>
+                    <button onclick="validateForm()">DONE</button>
+                </div>
+            </div>
+            <small>
+                If you already have an account <a href="{{ url_for('login') }}">Click Here!</a>
+            </small>
+        </div>
+    </form>
+
+    <script>
+        function validateAndNext(nextStep) {
+            // Basic validation
+            const email = document.getElementById('email').value;
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.querySelector('.step.active').classList.remove('active');
+            document.querySelector(`.${nextStep}`).classList.add('active');
+        }
+
+        function validateForm() {
+            // Password validation
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            alert('Form submitted successfully!');
+            // Add code to submit the form or perform further actions
+        }
+
+        function isValidEmail(email) {
+            // Basic email validation (you can customize this based on your requirements)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function prevStep(prevStep) {
+            document.querySelector('.step.active').classList.remove('active');
+            document.querySelector(`.${prevStep}`).classList.add('active');
+        }
+    </script>
+
+
+</body>
+
+</html>

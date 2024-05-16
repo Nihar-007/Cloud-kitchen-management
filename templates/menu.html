@@ -1,0 +1,164 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="{{ url_for('static',filename='css/menu.css') }}">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <!-- <link rel="stylesheet" href="../static/css/menu.css"> -->
+      <title>Menu</title>
+  </head>
+  <body>
+      
+  <nav>
+      <div class="logo"><h1>Main Menu <span>.</span></h1></div>
+    
+
+      <form action="#" method="post" class="search-bar">
+          <input type="text" name="searchquery" placeholder="Search" id="search" />
+          <button type="submit" class="search-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 40 40"
+              stroke-width="2"
+              stroke="black"
+              class="w-4 h-4"
+              color="black">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </button>
+        </form>
+
+        <script>
+          $(document).ready(function () {
+            // load_data()
+            function load_data(q) {
+              $.ajax({
+                url: '/livesearch',
+                method: 'POST',
+                data: { q: q },
+                success: function (result) {
+                  $('.contentsearch').empty();
+                  result.forEach(function (item) {
+                    $('.contentsearch').append('<div class="itemsdata">\
+                  <div class="items">\
+                  <div class="contanier">\
+                  <div class="list">\
+                  <img class="shop-item-image" src="../static/restimg/'+ item.image + '" alt="' + item.item + '">\
+                  <div class="detail">\
+                  <div id="name" class="shop-item-title">'+ item.item + '</div>\
+                  <div id="rupis" class="shop-item-price">$'+ item.price + '</div>\
+                  <button id="add" class="add">Add to Cart</button>\
+                   </div></div></div></div>');
+                  });
+                  // console.log($.type(result))
+                  console.log(result)
+                }
+              });
+            }
+
+            $('#search').keyup(function () {
+              var search = $(this).val();
+              if (search != "") {
+                $('.contentmain').hide()
+                $('.contentsearch').show()
+                load_data(search)
+              }
+              else if (search == "") {
+                $('.contentmain').show()
+                $('.contentsearch').hide()
+              }
+            });
+
+          })
+        </script>
+
+      <div class="navbar">
+          <ul>
+              <li><a href="login">Login</a></li>
+              <li><a href="https://maps.app.goo.gl/GUj55wBqYm45LMSW6" target="_blank">Location</a></li>
+              <li><a href="/">Home</a></li>
+          </ul>
+      </div>
+  </nav>
+  <div class="contentsearch"></div>
+  <div class="contentmain">
+  
+  <div class="items">
+    <h1>punjabi</h1>
+    <div class="contanier">
+      {% for values in data %}
+      {% if values.category == 'punjabi' %}
+      <div class="list">
+        <img class="shop-item-image" src="../static/restimg/{{values.image}}" alt="{{values.item}}">
+        <div class="detail">
+          <div id="name" class="shop-item-title">{{ values['item'] }}</div>
+          <div id="rupis" class="shop-item-price">${{ values.price }}</div>
+          <button id="add" class="add">Add to Cart</button>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="items">
+    <h1>Gujarati</h1>
+    <div class="contanier">
+      {% for values in data %}
+      {% if values.category == 'gujarati' %}
+      <div class="list">
+        <img class="shop-item-image" src="../static/restimg/{{values.image}}" alt="{{values.item}}">
+        <div class="detail">
+          <div id="name" class="shop-item-title">{{ values['item'] }}</div>
+          <div id="rupis" class="shop-item-price">${{ values.price }}</div>
+          <button id="add" class="add">Add to Cart</button>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <!-- cart start -->
+  <div class="items">
+    <h1>south indian</h1>
+    <div class="contanier">
+      {% for values in data %}
+      {% if values.category == 'south indian' %}
+      <div class="list">
+        <img class="shop-item-image" src="../static/restimg/{{values.image}}" alt="{{values.item}}">
+        <div class="detail">
+          <div id="name" class="shop-item-title">{{ values['item'] }}</div>
+          <div id="rupis" class="shop-item-price">${{ values.price }}</div>
+          <button id="add" class="add">Add to Cart</button>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <!-- cart end  -->
+  <!-- cart start -->
+  <div class="items">
+    <h1>Maharasta</h1>
+    <div class="contanier">
+      {% for values in data %}
+      {% if values.category == 'maharastra' %}
+      <div class="list">
+        <img class="shop-item-image" src="../static/restimg/{{values.image}}" alt="{{values.item}}">
+        <div class="detail">
+          <div id="name" class="shop-item-title">{{ values['item'] }}</div>
+          <div id="rupis" class="shop-item-price">${{ values.price }}</div>
+          <button id="add" class="add">Add to Cart</button>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>  
+  </body>
+  </html>

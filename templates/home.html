@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Restaurant</title>
+</head>
+<body>
+    
+                    <!-- ************************    navbar  ************************** -->
+
+<nav>
+    <div class="logo"><i><h1>Restaurant <span>.</span></h1></i></div>
+    <div class="navbar">
+        <ul>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <!-- <li><a href="#about_us">Contact US</a></li> -->
+            <li><a href="{{ url_for('aboutUs') }}">About Us</a></li>
+            <li><a href="https://maps.app.goo.gl/GUj55wBqYm45LMSW6" target="_blank">Location</a></li>
+            <!-- <li><a href="#">Home</a></li> -->
+        </ul>
+    </div>
+</nav>
+<hr class="hr1">
+
+
+    <!-- *****************************  right circle with animation *************************** -->
+
+<div class="circal">
+    <div class="backcolor">
+
+    <div class="bord">
+        <img src="../static/images/cover.png" alt="FULL THALI PLATE" srcset="">
+    </div>
+</div>
+
+</div>
+
+
+    <!-- ****************************    welcome writing ******************************* -->
+<div class="welcome">
+    <h1>Welcome</h1>
+    <h2><p id="over">To our Restaurant</p></h2>
+    <p id="info">Flavours for royality, Bringing class to cuisine, Foodies welcome here, Something hot, Something tasty, Good food. Good mood.</p>
+</div>
+
+          <!-- ********************    menu  bar ***************************** -->
+
+<div class="menu">
+    <h1>Menu</h1>
+    <p><span>999</span>  CATEGORY</p>
+
+    <button><a href="{{ url_for('menu') }}"><i class="fa-solid fa-arrow-right " style="color: #ffffff;"></i></a></button>
+    <div class="img">
+    <img src="../static/images/menu_plate.jpeg" alt="" srcset="">
+</div>
+
+
+</div>
+
+
+       <!-- **************************   page 2 start ****************************** -->
+
+<div class="pg2" >
+    <div class="about">
+        <h1>About the Restaurant</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex alias officiis laboriosam maxime numquam optio! Eum adipisci doloremque quae autem delectus officia. Ad aut deleniti, ratione possimus maxime saepe nemo.</p>
+    </div>
+    <div class="about_img"><img src="../static/images/restaurant.jpg" alt=""></div>
+</div>
+
+
+         <!-- *****************************  img on down words *************************** -->
+<div class="gallery">
+    <div class="galleryItem">
+        <h1 class="galleryTitle">By Over Yourself!</h1>
+        <img src="../static/images/gal1.jpg"
+            alt="" class="galleryImg">
+    </div>
+    <div class="galleryItem">
+        <img src="../static/images/gl3.jpg"
+            alt="" class="galleryImg">
+        <h1 class="galleryTitle">The Way We Cooks</h1>
+    </div>
+    <div class="galleryItem">
+        <h1 class="galleryTitle">How It Looks!</h1>
+        <img src="../static/images/gl2.jpg"
+            alt="" class="galleryImg">
+    </div>
+</div>
+<div class="newSeason">
+    <div class="nsItem">
+        <img src="../static/images/gl5.jpg"
+            alt="" class="nsImg">
+    </div>
+    <div class="nsItem">
+        <h3 class="nsTitleSm">NEW CUISINES</h3>
+        <h1 class="nsTitle">New Season</h1>
+        <h1 class="nsTitle">FRESH FOOD</h1>
+        <a href="{{ url_for('menu') }}">
+            <button class="nsButton">MAIN MENU</button>
+        </a>
+    </div>
+    <div class="nsItem">
+        <img src="../static/images/gl4.jpg"
+            alt="" class="nsImg">
+    </div>
+</div>
+
+
+
+                <!-- ***************************** about part down ******************************** -->
+<footer id="about_us">
+    <div class="footerLeft">
+        <div class="footerMenu">
+            <h1 class="fMenuTitle">About Us</h1>
+            <ul class="fList">
+                <li class="fListItem">10 Years</li>
+                <li class="fListItem">Very popular</li>
+                <li class="fListItem">Fresh</li>
+                <li class="fListItem">Healthy</li>
+                <li class="fListItem">Junk</li>
+            </ul>
+        </div>
+        <div class="footerMenu">
+            <h1 class="fMenuTitle">Different Country</h1>
+            <ul class="fList">
+                <li class="fListItem">Indian</li>
+                <li class="fListItem">French</li>
+                <li class="fListItem">Belgium</li>
+                <li class="fListItem">German</li>
+                <li class="fListItem">New york</li>
+            </ul>
+        </div>
+        <div class="footerMenu">
+            <h1 class="fMenuTitle">Types</h1>
+            <ul class="fList">
+                <li class="fListItem">Veg</li>
+                <li class="fListItem">Non-veg</li>
+                <li class="fListItem">Sea-food</li>
+                <li class="fListItem">Fast-food</li>
+                <li class="fListItem">Cheesy</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footerRight">
+     
+        <div class="footerRightMenu">
+            <h1 class="fMenuTitle">Follow Us</h1>
+            <div class="fIcons">
+                <img src="../static/images/facebook.png" alt="" class="fIcon">
+                <img src="../static/images/twitter.png" alt="" class="fIcon">
+                <img src="../static/images/instagram.png" alt="" class="fIcon">
+                <img src="../static/images/whatsapp.png" alt="" class="fIcon">
+            </div>
+        </div>
+        <div class="footerRightMenu">
+            <span class="copyright">&copy; The CODE SMASHERS&TRADE;</span>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

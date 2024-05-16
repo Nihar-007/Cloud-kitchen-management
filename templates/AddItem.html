@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/edit.css') }}">
+    <title>Add Items</title>
+</head>
+<body>
+    <form method="post">
+        <fieldset>
+            <legend>Adding Items</legend>
+            
+            <label for="item">Item Name : </label>
+            <input type="text" name="item" id="item"><br><br>
+
+            <label for="qty">Quantity : </label>
+            <input type="number" name="qty" id="qty"><br><br>
+
+            <button type="submit">Submit</button>
+        
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,3 @@
+--- this is a secret file inside the image here's how to do it ---
+syntax :- copy /b <image name.extension> + <file name.extension> <new image name.extension>
+E.G. :- copy /b img.jpg + new.txt img1.jpg

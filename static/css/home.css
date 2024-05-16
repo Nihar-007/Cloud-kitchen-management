@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+body {
+    background-image: url("../images/black.jpg");
+    min-height: 380px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+
+    /* overflow: hidden; */
+}
+body::-webkit-scrollbar {
+    width: 8px;             /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: rgb(163, 163, 163);        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(88, 88, 88);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    /* border: 3px solid orange;  creates padding around scroll thumb */
+  }
+
+ nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px 10px 30px;
+    height: 50px;
+    border: 0 solid rgb(255, 255, 255);
+}
+
+nav .logo {
+    color: white;
+    
+    margin: 5px;
+    font-size: 12px;
+}
+
+nav .logo span {
+    color: rgb(158, 99, 109);
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    border: 2px solid white;
+    padding: 10px;
+    margin: 0px 5px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+.navbar ul li:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(0, 0, 0);
+
+}
+.navbar ul li a:hover{
+    color: black;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+}
+
+.hr1 {
+    margin: 0 30px 0 30px;
+}
+
+.circal {
+    float: right;
+    height: 450px;
+    width: 650px;
+    margin: 10px;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+.circal .backcolor{
+    height: 450px;
+    width: 800px;
+    background-color: black;
+    margin-left: 180px;
+    position: relative;
+    border-radius: 360px 0px 100px 360px;
+    
+}
+
+.circal .bord img {
+    min-height: 100px;
+    max-height: 400px;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    box-shadow: 1px 1px 8px 13px #201f1f;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 70%;
+    animation: moveInCircle 2s linear, blurAnimation 2s infinite;
+}
+   
+
+@keyframes moveInCircle {
+    0% {
+        transform: rotate(360deg);
+        left: 100px;
+    }
+    50%{
+    
+            transform: rotate(230deg);
+            left: 60px;
+        
+    }
+    100% {
+        transform: rotate(180deg);
+        left: 25px;
+    }
+}
+
+@keyframes blurAnimation {
+    0% {
+        box-shadow: 0px 0px 4px 9px #201f1f;
+    }
+    100% {
+        box-shadow: 1px 1px 8px 13px #201f1f;
+    }
+}
+
+.welcome {
+    color: white;
+    height: 200px;
+    width: 500px;
+    margin: 30px;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.welcome h1, .welcome p {
+    margin-left: -100%; 
+    animation: slideIn 1s ease-out forwards; 
+}
+
+.welcome h1 ,p{
+    margin-bottom: 10px; 
+}
+
+@keyframes slideIn {
+    to {
+        margin-left: 0; /* Move elements to the original position */
+    }
+}
+
+
+
+.menu{
+    color: white;
+    border: 3px solid white;
+    max-width: 400px;
+    border-radius: 10px;
+    margin: 30px;
+    margin-bottom: 120px;
+    backdrop-filter: blur(2px);
+    position: relative;
+    overflow: hidden;
+}
+.menu h1{
+    display: flex;
+    justify-content: center;
+}
+.menu p{
+    margin: 20px;
+}
+.menu button{
+    margin: 20px;
+    padding: 5px 15px;
+    background: transparent;
+    border: 5px solid rgb(255, 255, 255);
+    font-size: 30px;
+    color: wheat;
+    border-radius: 5px;
+}
+.menu span{
+    color:aqua;
+}
+.menu .img{
+    position: absolute;
+    top: 40px;
+    left: 60%;
+
+}
+.menu .img img {
+    aspect-ratio: 2/5; /* Corrected the aspect-ratio value */
+    border-radius: 50%;
+    animation: rotrte  5s;
+}
+
+@keyframes rotrte {
+    0% {
+        transform: rotate(180deg); /* Use transform: rotate() for rotation */
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/*                      page 2 css    */ 
+
+.pg2{
+    z-index: -1;
+    height: 100vh;
+  
+    /* background-color: #201f1f; */
+    position: relative;
+    backdrop-filter: blur(10px);
+    background-image: linear-gradient( rgb(58, 57, 57), rgb(10, 10, 10));
+}
+
+.pg2 .about{
+    margin: 30px;
+    position: absolute;
+    /* top: 90px;
+    left: 50px; */
+    right: 50px;
+    top: 90px;
+    color: white;
+    max-width: 400px;
+    padding: 30px;
+    border: 2px solid white;
+
+
+}
+
+
+.pg2 .about_img{
+    /* right: 70px;
+    top: 70px; */
+    top: 90px;
+    left: 70px;
+    
+    position: absolute;
+
+}
+.pg2 .about_img img{
+    height: 300px;
+    width: 500px;
+    border-radius: 10px;
+}
+
+/* gallery             ****           bhbdv    */
+
+
+.gallery {
+    padding: 50px;
+    display: flex;
+    background-color: black;
+  }
+  
+  .galleryItem {
+    flex: 1;
+    padding: 50px;
+    background-color: #201f1f;
+  }
+  .galleryTitle{
+    color: white;
+  }
+  
+  .galleryImg {
+    width: 100%;
+  }
+  
+  .newSeason {
+    display: flex;
+  }
+  
+  .nsItem {
+    flex: 1;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .nsImg {
+    width: 100%;
+    height: 500px;
+  }
+  
+  .nsTitle {
+    font-size: 40px;
+  }
+  
+  .nsButton {
+    padding: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+
+/*      footer      */
+
+
+footer {
+ 
+    display: flex;
+    background-color: white;
+  }
+  
+  .footerLeft {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+  }
+  
+  .fMenuTitle {
+    font-size: 16px;
+
+  }
+  
+  .fList {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .fListItem {
+    margin-bottom: 10px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .footerRight {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .fInput {
+    padding: 5px;
+  }
+  
+  .fButton {
+    padding: 5px;
+    background-color: black;
+    color: white;
+  }
+  
+  .fIcons{
+    display: flex;
+  }
+  
+  .fIcon{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  .copyright{
+    font-weight: 300;
+    font-size: 14px;
+  }
+ 
+ 
+  

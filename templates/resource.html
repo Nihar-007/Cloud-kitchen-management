@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/view.css">
+    <title>Resources Management</title>
+</head>
+<body>
+    Hello {{ name.name }}, Here are all the details of Resources we have : 
+    <table>
+        <tr>
+            <th>Srno</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Restock</th>
+        </tr>
+        {% for val in data %}
+        <tr>
+            <td>{{ val.id }}</td>
+            <td>{{ val.item }}</td>
+            <td>{{ val.quantity }} KG</td>
+            <td><button><a href="{{ url_for('restock', id=val.id) }}">Restock</a></button></td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <button><a href="{{ url_for('AddItem') }}">Add items</a></button>
+    <button><a href="{{ url_for('manager') }}">Back</a></button>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/edit.css') }}">
+    <title>Add Cuisines</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Add Cuisines</legend>
+
+            <label for="name">Item Name : </label>
+            <input type="text" name="name" id="name"><br><br>
+
+            <label for="cat">Category : </label>
+            <input type="text" name="cat" id="cat"><br><br>
+            
+            <label for="price">Price : </label>
+            <input type="integer" name="price" id="price"><br><br>
+
+            <label for="img">Image : </label>
+            <input type="file" name="img" id="img" accept=".jpg, .jpeg, .png"><br><br>
+
+            <button type="submit">Submit</button>
+            <button><a href="{{ url_for('CuisineManager') }}">Back</a></button>
+
+        </fieldset>
+    </form>
+</body>
+</html>

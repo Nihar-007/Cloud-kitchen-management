@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/edit.css') }}">
+    <title>RESTOCKING</title>
+</head>
+<body>
+    <form method="post">
+        <fieldset>
+            <legend>RESTOCKING</legend>
+
+            <label for="name">Offer Name : </label> 
+            <input type="text" name="name" id="name" value="{{ data.offer_on }}"><br><br>
+        
+            <label for="code">Code : </label>
+            <input type="text" name="code" id="code" value="{{ data.code }}"><br><br>
+
+            <label for="valid">Valid Till : </label>
+            <input type="date" name="valid" id="valid" value="{{ data.valid }}"><br><br>
+
+            <button type="submit">Submit</button>
+            <button><a href="{{ url_for('OfferManager') }}">Back</a></button>
+
+        </fieldset>
+    </form>
+</body>
+</html>

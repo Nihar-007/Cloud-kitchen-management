@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/css/manager.css">
+    <title>Manager</title>
+</head>
+<body>
+    <div id="admin-aside-navbar">
+        <!-- admin icon & it's teaxt container which is admin panel -->
+        <div id="admin-content-container" class="border">
+            <i class="fa-solid fa-user-tie border-icon"></i>
+            <span id="admin-panel-text">Manager Panel</span>
+        </div>
+        <!-- admin category of different different kinds  -->
+    <div id="admin-panel-category-buttons">
+       <button id="btn-for-manager width-height" class="width-height border"><a href="{{ url_for('resource') }}">RESOURCES</a></button>
+       <button id="btn-for-cuisine-detail " class="width-height border"><a href="{{ url_for('CuisineManager') }}">CUISINE DETAILS</a></button>
+       <button id="chef" onclick="display()"  class="width-height border"><a href="{{ url_for('chef') }}">CHEF</a></button>
+       <button id="btn-for-chef" class="width-height border"><a href="{{ url_for('customerDetails') }}">CUSTOMER DETAILS</a></button>
+       <button id="btn-for-order-detail " class="width-height border"><a href="{{ url_for('OrderPending') }}">ORDER DETAILS</a></button>
+       <button id="btn-for-offer-detail " class="width-height border"><a href="{{ url_for('OfferManager') }}">OFFER DETAILS</a></button>
+       <button id="btn-for-logout " class="width-height border"><a href="{{ url_for('logout') }}">LOGOUT</a></button>
+    </div>
+    </div>
+
+
+    <!--                         this is for chef for accept decline -->
+
+
+
+<div class="display">
+    
+
+<div class="order displaycont" id="order">
+    <div class="container">
+
+        <h1>CU Name</h1>
+        <div class="items">
+           
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pizza</td>
+                <td id="pri">2</td>
+                <td id="pri">$20.00</td>
+            </tr>
+            <tr>
+                <td>Burger</td>
+                <td id="pri">1</td>
+                <td id="pri">$8.00</td>
+            </tr>
+            <tr>
+                <td id="pri">Total :</td>
+                <td id="pri">num </td>
+                <td id="pri">num</td>
+            </tr>
+            
+            <!-- Add more rows for other items -->
+        </tbody>
+    </table>
+        </div>
+
+    </div>
+
+
+
+    <!-- ************************************* next order  ********************************* -->
+
+    <div class="container">
+
+        <h1>CU Name</h1>
+        <div class="items">
+           
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pizza</td>
+                <td id="pri">2</td>
+                <td id="pri">$20.00</td>
+            </tr>
+            <tr>
+                <td>Burger</td>
+                <td id="pri">1</td>
+                <td id="pri">$8.00</td>
+            </tr>
+            <tr>
+                <td id="pri">Total :</td>
+                <td id="pri">num </td>
+                <td id="pri">num</td>
+            </tr>
+            
+            <!-- Add more rows for other items -->
+        </tbody>
+    </table>
+        </div>
+
+    </div>
+    </div>
+</div>
+
+              <!--     heir chef done            -->
+              <script>
+  let content = document.getElementById("order");
+        function display() {
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+            </script> 
+        
+</body>
+</html>

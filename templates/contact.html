@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+
+<style>
+    /* Advanced CSS styles for the contact form */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    form {
+        width: 80%;
+        max-width: 500px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    fieldset {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    legend {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    textarea {
+        resize: vertical;
+        width: 96%;
+    }
+
+    button[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <form action="" method="POST">
+        <fieldset>
+            <legend>Contact US Form</legend>
+
+            <label for="uname">Username : </label> {{ session['uname'] }} <br><br>
+
+            <label for="email">email : </label> {{ session['email'] }} <br><br>
+
+            <label for="msg">Feedback : </label>
+            <textarea name="msg" id="msg" cols="30" rows="5"></textarea><br><br>
+
+            <button type="submit" id="btn">Submit</button>
+        
+        </fieldset>
+    </form>
+</body>
+</html>
